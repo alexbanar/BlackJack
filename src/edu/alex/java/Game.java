@@ -88,34 +88,10 @@ public class Game
             int option = IO.getInt("Enter your option: ", 1, 2);
             switch (option) {
                 case 1:
-                    playerHand.addCard(mDeck.draw());
-                    if(playerHand.getValue() > 21)
-                    {
-                        isGameOver = true;
-                        whoWon = "Dealer";
-                    }
+                    hit();
                     break;
                 case 2:
-                    while(dealerHand.getValue() < 17)
-                    {
-                        dealerHand.addCard(mDeck.draw());
-                    }
-
-                    if(playerHand.getValue() > dealerHand.getValue())
-                    {
-                        whoWon = "Player";
-                    }
-                    else
-                    {
-                        if(playerHand.getValue() < dealerHand.getValue())
-                        {
-                            whoWon = "Dealer";
-                        }
-                        else
-                        {
-                            whoWon = "Tie";;
-                        }
-                    }
+                    stand();
                     isGameOver = true;
                     break;
                 default:
@@ -130,6 +106,7 @@ public class Game
         if(playerHand.getValue() > 21 )
         {
             isGameOver = true;
+            whoWon = "Dealer";
         }
         else
         {
@@ -146,6 +123,27 @@ public class Game
         while(dealerHand.getValue() < 17)
         {
             dealerHand.addCard(mDeck.draw());
+        }
+
+        if(dealerHand.getValue() > 21 )
+        {
+            whoWon = "Player";
+        }
+        else
+        {
+            if (playerHand.getValue() > dealerHand.getValue()) {
+                whoWon = "Player";
+            }
+            else
+            {
+                if (playerHand.getValue() < dealerHand.getValue()) {
+                    whoWon = "Dealer";
+                }
+                else
+                {
+                    whoWon = "Tie";
+                }
+            }
         }
     }
 

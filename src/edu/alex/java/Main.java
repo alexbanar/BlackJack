@@ -28,13 +28,14 @@ public class Main {
                     {
                         if((game.getIsGameOver() == true) && (game.checkBlackJack() == false))
                         {
-                            System.out.println("The result is Tie");
+                            System.out.println("The result is Tie: Player with 21 pouints.  Dealer with 21 pouints");
                         }
                         else
                         {
                             game.play();
                             if(game.getWhoWon().equals("Player"))
                             {
+                                playerScore += 1;
                                 System.out.println("The Winner is " + "Player with " + game.getPlayerHand().getValue() + " points"
                                                  + ". Dealer with " + game.getDealerHand().getValue() + " points");
                             }
@@ -42,18 +43,19 @@ public class Main {
                             {
                                 if(game.getWhoWon().equals("Dealer"))
                                 {
+                                    dealerScore += 1;
                                     System.out.println("The Winner is " + "Dealer with " + game.getDealerHand().getValue() + " points"
                                             + ". Player with " + game.getPlayerHand().getValue() + " points");
                                 }
                                 else
                                 {
-                                    System.out.println("It is Draw: Player with " + game.getPlayerHand().getValue() + " points"
+                                    System.out.println("The result is Tie: Player with " + game.getPlayerHand().getValue() + " points"
                                                    + ". Dealer with " + game.getDealerHand().getValue() + " points");
                                 }
-
                             }
-
                         }
+
+                        System.out.printf("The Score is: Player => %s , Dealer => %s\n\n", playerScore,  dealerScore);
                     }
                     break;
                 case 2:

@@ -1,6 +1,26 @@
 package edu.alex.java;
 
+import java.util.ArrayList;
+
 public class Main {
+
+    public static void  printCards(ArrayList<Card> resultCards)
+    {
+        for (Card resultPlayerCard : resultCards)
+        {
+            System.out.print(resultPlayerCard);
+        }
+        System.out.println();
+    }
+
+    public static void  printCards(Game game)
+    {
+        System.out.print("PlayerCardrs: ");
+        printCards(game.getPlayerHand().getCards());
+
+        System.out.print("DealerCardrs: ");
+        printCards(game.getDealerHand().getCards());
+    }
 
     public static void main(String[] args) {
 	// write your code here
@@ -22,17 +42,20 @@ public class Main {
                     if((game.getIsGameOver() == true) && (game.checkBlackJack() == true))
                     {
                         playerScore += 1.5;
+                        printCards(game);
                         System.out.println("The winner is Player by Black Jack!!!");
                     }
                     else
                     {
                         if((game.getIsGameOver() == true) && (game.checkBlackJack() == false))
                         {
+                            printCards(game);
                             System.out.println("The result is Tie: Player with 21 pouints.  Dealer with 21 pouints");
                         }
                         else
                         {
                             game.play();
+                            printCards(game);
                             if(game.getWhoWon().equals("Player"))
                             {
                                 playerScore += 1;

@@ -46,6 +46,6 @@ public class Card {
         return rank + " of " + suit;
     }
     public String toString(){
-        return rank + " of " + suit;
+        return "<" + rank + " of " + suit + ">  ";
     }
 }

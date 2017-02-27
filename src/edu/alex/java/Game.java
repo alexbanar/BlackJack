@@ -76,12 +76,33 @@ public class Game
         }
     }
 
+    void  printCards(ArrayList<Card> resultCards)
+    {
+        for (Card resultPlayerCard : resultCards)
+        {
+            System.out.print(resultPlayerCard);
+        }
+        System.out.println();
+    }
+
+    void printCards()
+    {
+        System.out.print("PlayerCardrs: ");
+        printCards(playerHand.getCards());
+
+        System.out.print("Dealer first open Card: ");
+        Card dealerReversedSecondDCard = dealerHand.getCards().remove(1);
+        printCards(dealerHand.getCards());
+        dealerHand.getCards().add(dealerReversedSecondDCard);
+    }
+
     void play() {
         isGameOver = false;
         do {
 
+            printCards();
             System.out.println("Player cards sum is " + playerHand.getValue());
-            System.out.println("Dealer open card value is " + playerHand.getCards().get(0).getValue());
+            System.out.println("Dealer open card value is " + dealerHand.getCards().get(0).getValue());
             System.out.println("Press '1' - for hit");
             System.out.println("Press '2' - for stand");
 
